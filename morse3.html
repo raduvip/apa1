@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cod Morse Interactiv</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('rombul.png'); /* imaginea locală 💠 */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  #morse-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #00ff00;
+    padding: 20px 40px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 24px;
+  }
+
+  #morse-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ff00;
+  }
+
+  #click-indicator {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px black;
+  }
+
+  #translation-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: none;
+    z-index: 10;
+    max-width: 90%;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  #close-popup {
+    margin-top: 15px;
+    padding: 5px 15px;
+    cursor: pointer;
+    background-color: #00ff00;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div id="morse-container">
+  .- .-- .-  .--. .- ... - .-. .- --.. .-  .- -- .. -. - .. .-. .. .-.. .  .-.. ..- -- .. ..
+</div>
+<div id="click-indicator">Click pe codul Morse pentru traducere</div>
+
+<div id="translation-popup">
+  <div id="translation-text"></div>
+  <button id="close-popup">Închide</button>
+</div>
+
+<script>
+  const morseContainer = document.getElementById('morse-container');
+  const popup = document.getElementById('translation-popup');
+  const translationText = document.getElementById('translation-text');
+  const closeBtn = document.getElementById('close-popup');
+
+  const translation = "Apa păstrează amintirile lumii.";
+
+  morseContainer.addEventListener('click', () => {
+    translationText.textContent = translation;
+    popup.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
